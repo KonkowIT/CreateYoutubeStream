@@ -4,10 +4,10 @@
 		skrypt LaunchStream.ps1
 	
 	===========================================================================
-	 	Created:   		16-10-2020
+	 	Created:   	16-10-2020
 	 	Created by:   	Konrad Kowalski
 	 	Organization: 	KonkowIT 
-		Filename:     	Create-YoutubeStream.ps1
+		Filename:     	CreateYoutubeStream.ps1
 	===========================================================================
 #>
 
@@ -42,6 +42,9 @@ $timeEnd = "2020-10-16 19:39:15"
 
 ################################################################################
 
+# Home variable 
+$hDir = Split-Path -Parent $myinvocation.mycommand.definition
+
 # Chrome variables
 $chromeInstaller = "ChromeInstaller.exe"
 $chromeDownloadLink = "http://dl.google.com/chrome/install/375.126/chrome_installer.exe"
@@ -53,14 +56,14 @@ $timeStart = Get-Date $timeStart
 $timeEnd = Get-Date $timeEnd
 
 # Task variables
-$actionW7 = "-WindowStyle Minimized -file 'C:\SCREENNETWORK\admin\LaunchStream.ps1' -TimeEnd `'$timeEnd`' -Verbose"
-$actionW10 = "-WindowStyle Minimized -Command `"& `'C:\SCREENNETWORK\admin\LaunchStream.ps1`' -TimeEnd `'$timeEnd`' -Verbose`""
+$actionW7 = "-WindowStyle Minimized -file '$hDir\LaunchStream.ps1' -TimeEnd `'$timeEnd`' -Verbose"
+$actionW10 = "-WindowStyle Minimized -Command `"& `'$hDir\admin\LaunchStream.ps1`' -TimeEnd `'$timeEnd`' -Verbose`""
 $taskDescription = "Uruchamianie streamu z YT"
 $taskName = "LaunchYTStream"
 
 # API variables
 $snName = $env:computername
-$requestURL = 'http://api2.arrow.screennetwork.pl/'
+$requestURL = 'http://***/'
 $requestHeaders = @{'sn-api-token' = 'XXX'; 'sn-player' = "$snName"}
 
 # Other variables
